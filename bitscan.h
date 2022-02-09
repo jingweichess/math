@@ -7,10 +7,16 @@
 #include <intrin.h>
 
 #pragma intrinsic(_BitScanForward64)
+#pragma intrinsic(_BitScanReverse64)
 
 static bool BitScanForward64(std::uint32_t* index, std::uint64_t mask)
 {
     return _BitScanForward64((unsigned long*)index, mask) != 0;
+}
+
+static bool BitScanReverse64(std::uint32_t* index, std::uint64_t mask)
+{
+    return _BitScanReverse64((unsigned long*)index, mask) != 0;
 }
 
 #elif defined(__GNUC__)

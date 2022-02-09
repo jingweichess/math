@@ -66,5 +66,4 @@ static std::uint32_t popCount(std::uint64_t b)
     return popCountSparse(b);
 }
 
-
 #endif
