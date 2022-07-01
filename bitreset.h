@@ -16,9 +16,14 @@ static std::uint64_t ResetLowestSetBit(std::uint64_t b)
 
 #else
 
-static std::uint64_t ResetLowestSetBit(std::uint64_t b)
+constexpr std::uint64_t ResetLowestSetBit(std::uint64_t b)
 {
     return b & (b - 1);
 }
 
 #endif
+
+constexpr std::uint64_t ConstExprResetLowestSetBit(std::uint64_t b)
+{
+    return b & (b - 1);
+}

@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "popcount.h"
+
 #if defined(_MSC_VER)
 
 #include <intrin.h>
@@ -53,3 +55,17 @@ static bool BitScanForward64(std::uint32_t* index, std::uint64_t mask)
 }
 
 #endif
+
+constexpr std::uint32_t ConstExprBitScanForward64(std::uint64_t mask)
+{
+    assert(mask != 0);
+
+    std::uint32_t result = 0;
+
+    while ((mask & 1) == 0) {
+        mask = mask >> 1;
+        result++;
+    }
+
+    return result;
+}
