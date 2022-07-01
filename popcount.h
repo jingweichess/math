@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "bitreset.h"
+
 #if defined(_MSC_VER)
 
 #include <intrin.h>
@@ -67,3 +69,20 @@ static std::uint32_t popCount(std::uint64_t b)
 }
 
 #endif
+
+constexpr std::uint32_t ConstExprPopCount(std::uint64_t b)
+{
+    std::uint32_t i = 0;
+
+    while (b != 0ull) {
+        i++;
+        b = ConstExprResetLowestSetBit(b);
+    }
+
+    return i;
+}
+
+constexpr bool ConstExprPopCountIsOne(std::uint64_t b)
+{
+    return ConstExprPopCount(b) == 1;
+}

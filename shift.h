@@ -13,4 +13,6 @@ constexpr std::array<std::uint64_t, 64> oneShiftedBy{ []() constexpr {
     return result;
 }() };
 
-#define OneShiftedBy(x) (oneShiftedBy[x])
+constexpr std::uint64_t OneShiftedBy(std::uint32_t n) {
+    return oneShiftedBy[n];
+}
